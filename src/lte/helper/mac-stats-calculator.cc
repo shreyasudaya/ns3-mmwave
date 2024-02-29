@@ -46,26 +46,25 @@ MacStatsCalculator::~MacStatsCalculator()
 }
 
 TypeId
-MacStatsCalculator::GetTypeId(void)
+MacStatsCalculator::GetTypeId (void)
 {
-    static TypeId tid =
-        TypeId("ns3::MacStatsCalculator")
-            .SetParent<LteStatsCalculator>()
-            .SetGroupName("Lte")
-            .AddConstructor<MacStatsCalculator>()
-            .AddAttribute("DlOutputFilename",
-                          "Name of the file where the downlink results will be saved.",
-                          StringValue("DlMacStats.txt"),
-                          MakeStringAccessor(&MacStatsCalculator::SetDlOutputFilename),
-                          MakeStringChecker())
-            .AddAttribute("UlOutputFilename",
-                          "Name of the file where the uplink results will be saved.",
-                          StringValue("UlMacStats.txt"),
-                          MakeStringAccessor(&MacStatsCalculator::SetUlOutputFilename),
-                          MakeStringChecker());
-    return tid;
+  static TypeId tid = TypeId ("ns3::MacStatsCalculator")
+    .SetParent<LteStatsCalculator> ()
+    .SetGroupName("Lte")
+    .AddConstructor<MacStatsCalculator> ()
+    .AddAttribute ("LteDlOutputFilename",
+                   "Name of the file where the downlink results will be saved.",
+                   StringValue ("DlMacStats.txt"),
+                   MakeStringAccessor (&MacStatsCalculator::SetDlOutputFilename),
+                   MakeStringChecker ())
+    .AddAttribute ("LteUlOutputFilename",
+                   "Name of the file where the uplink results will be saved.",
+                   StringValue ("UlMacStats.txt"),
+                   MakeStringAccessor (&MacStatsCalculator::SetUlOutputFilename),
+                   MakeStringChecker ())
+  ;
+  return tid;
 }
-
 void
 MacStatsCalculator::SetUlOutputFilename(std::string outputFilename)
 {
@@ -196,7 +195,7 @@ MacStatsCalculator::DlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
 {
     NS_LOG_FUNCTION(macStats << path);
     uint64_t imsi = 0;
-    std::ostringstream pathAndRnti;
+    /*std::ostringstream pathAndRnti;
     std::string pathEnb = path.substr(0, path.find("/ComponentCarrierMap"));
     pathAndRnti << pathEnb << "/LteEnbRrc/UeMap/" << dlSchedulingCallbackInfo.rnti;
     if (macStats->ExistsImsiPath(pathAndRnti.str()) == true)
@@ -207,9 +206,9 @@ MacStatsCalculator::DlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
     {
         imsi = FindImsiFromEnbRlcPath(pathAndRnti.str());
         macStats->SetImsiPath(pathAndRnti.str(), imsi);
-    }
+    }*/
     uint16_t cellId = 0;
-    if (macStats->ExistsCellIdPath(pathAndRnti.str()) == true)
+    /*if (macStats->ExistsCellIdPath(pathAndRnti.str()) == true)
     {
         cellId = macStats->GetCellIdPath(pathAndRnti.str());
     }
@@ -217,7 +216,7 @@ MacStatsCalculator::DlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
     {
         cellId = FindCellIdFromEnbRlcPath(pathAndRnti.str());
         macStats->SetCellIdPath(pathAndRnti.str(), cellId);
-    }
+    }*/
 
     macStats->DlScheduling(cellId, imsi, dlSchedulingCallbackInfo);
 }
@@ -235,7 +234,7 @@ MacStatsCalculator::UlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
     NS_LOG_FUNCTION(macStats << path);
 
     uint64_t imsi = 0;
-    std::ostringstream pathAndRnti;
+    /*std::ostringstream pathAndRnti;
     std::string pathEnb = path.substr(0, path.find("/ComponentCarrierMap"));
     pathAndRnti << pathEnb << "/LteEnbRrc/UeMap/" << rnti;
     if (macStats->ExistsImsiPath(pathAndRnti.str()) == true)
@@ -246,9 +245,9 @@ MacStatsCalculator::UlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
     {
         imsi = FindImsiFromEnbRlcPath(pathAndRnti.str());
         macStats->SetImsiPath(pathAndRnti.str(), imsi);
-    }
+    }*/
     uint16_t cellId = 0;
-    if (macStats->ExistsCellIdPath(pathAndRnti.str()) == true)
+    /*if (macStats->ExistsCellIdPath(pathAndRnti.str()) == true)
     {
         cellId = macStats->GetCellIdPath(pathAndRnti.str());
     }
@@ -256,7 +255,7 @@ MacStatsCalculator::UlSchedulingCallback(Ptr<MacStatsCalculator> macStats,
     {
         cellId = FindCellIdFromEnbRlcPath(pathAndRnti.str());
         macStats->SetCellIdPath(pathAndRnti.str(), cellId);
-    }
+    }*/
 
     macStats->UlScheduling(cellId, imsi, frameNo, subframeNo, rnti, mcs, size, componentCarrierId);
 }

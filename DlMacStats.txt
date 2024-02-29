@@ -1,0 +1,5 @@
+% time	cellId	IMSI	frame	sframe	RNTI	mcsTb1	sizeTb1	mcsTb2	sizeTb2	ccId
+0.021	1	7	3	2	1	0	81	0	0	0
+0.021	1	7	3	2	1	0	81	0	0	1
+0.022	1	8	3	3	2	0	81	0	0	0
+0.022	1	8	3	3	2	0	81	0	0	1
