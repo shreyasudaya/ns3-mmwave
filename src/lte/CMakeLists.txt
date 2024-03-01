@@ -27,7 +27,6 @@ set(source_files
     helper/lte-stats-calculator.cc
     helper/mac-stats-calculator.cc
     helper/mac-tx-stats-calculator.cc
-    helper/mmwave-bearer-stats-calculator.cc
     helper/phy-rx-stats-calculator.cc
     helper/phy-stats-calculator.cc
     helper/phy-tx-stats-calculator.cc
@@ -165,7 +164,6 @@ set(header_files
     helper/lte-stats-calculator.h
     helper/mac-stats-calculator.h
     helper/mac-tx-stats-calculator.h
-    helper/mmwave-bearer-stats-calculator.h
     helper/phy-rx-stats-calculator.h
     helper/phy-stats-calculator.h
     helper/phy-tx-stats-calculator.h
