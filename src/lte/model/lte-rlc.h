@@ -97,6 +97,13 @@ class LteRlc : public Object
      * \param lcId
      */
     void SetLcId(uint8_t lcId);
+    
+    /**
+    *
+    *
+    * \param imsi
+    */
+   void SetImsi (uint64_t imsi);
 
     /**
      *
@@ -182,6 +189,19 @@ class LteRlc : public Object
 
     /// \todo MRE What is the sense to duplicate all the interfaces here???
     // NB to avoid the use of multiple inheritance
+    
+    uint32_t GetTxBytesInReportingPeriod() const {
+     return m_txBytesInReportingPeriod;
+   }
+
+   uint32_t GetTxPacketsInReportingPeriod() const {
+     return m_txPacketsInReportingPeriod;
+  }
+
+   void ResetRlcCounters () {
+     m_txBytesInReportingPeriod = 0;
+     m_txPacketsInReportingPeriod = 0;
+   }
 
   protected:
     // Interface forwarded by LteRlcSapProvider
@@ -221,6 +241,7 @@ class LteRlc : public Object
 
     uint16_t m_rnti; ///< RNTI
     uint8_t m_lcid;  ///< LCID
+    uint64_t m_imsi; ///< IMSI
 
     /**
      * Used to inform of a PDU delivery to the MAC SAP provider
@@ -240,6 +261,10 @@ class LteRlc : public Object
     bool isMc;
     EpcX2RlcProvider* m_epcX2RlcProvider;
     EpcX2RlcUser* m_epcX2RlcUser;
+    
+    
+    uint32_t m_txPacketsInReportingPeriod;
+    uint32_t m_txBytesInReportingPeriod;
 };
 
 /**
